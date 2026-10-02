@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario de inicio | Evaluación de Presencia Online</title>
+<style>
+:root{--ink:#12302f;--paper:#f4f7f6;--card:#fff;--line:#cfdcd9;--petrol:#0f3d3e;--amber:#e0a015;--muted:#5b6f6d;--err:#b3261e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 "Segoe UI",system-ui,sans-serif}
+header{background:var(--petrol);color:#fff;padding:36px 20px 40px}
+header div,main{max-width:720px;margin:0 auto}
+h1{font-size:clamp(1.6rem,4.5vw,2.2rem);line-height:1.15;margin:0 0 10px;font-weight:700}
+header p{margin:0;color:#cfe3e0;max-width:56ch}
+main{padding:24px 20px 56px}
+fieldset{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 20px;padding:18px 18px 6px}
+legend{font-weight:700;font-size:1.05rem;padding:0 8px;color:var(--petrol)}
+.hint{margin:0 0 14px;color:var(--muted);font-size:.9rem}
+label{display:block;font-weight:600;font-size:.92rem;margin-bottom:14px}
+label span.r{color:var(--err)}
+input,select,textarea{display:block;width:100%;margin-top:5px;padding:10px 12px;font:inherit;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink)}
+textarea{min-height:84px;resize:vertical}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid var(--amber);outline-offset:1px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.chk input{width:auto;margin-top:4px}
+.err{color:var(--err);font-weight:600;margin:0 0 14px;min-height:1.2em}
+button{font:inherit;font-weight:700;border:0;border-radius:8px;padding:13px 22px;cursor:pointer}
+.go{background:var(--amber);color:#2a1d00;width:100%}
+.go[disabled]{opacity:.6;cursor:wait}
+.alt{background:var(--petrol);color:#fff}
+#ok{display:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px}
+#ok h2{margin:0 0 8px;color:var(--petrol)}
+#res{display:none}
+.hp{position:absolute;left:-9999px}
+@media print{body{background:#fff}header,main>*:not(#ok),#ok .noprint{display:none!important}#ok{display:block!important;border:0;padding:0}#res{display:block}#res dl{margin:0}#res dt{font-weight:700;margin-top:8px}#res dd{margin:0}}
+@media(prefers-reduced-motion:no-preference){#ok{animation:in .3s ease}@keyframes in{from{opacity:0}to{opacity:1}}}
+</style>
+</head>
+<body>
+<header><div>
+<h1>Cuéntanos de tu negocio para tu Evaluación de Presencia Online</h1>
+<p>Con esta información preparamos tu evaluación a la medida. Tu plazo de 3 días empieza cuando recibimos este formulario y confirmamos tu anticipo. Solo pedimos acceso de lectura; nunca necesitamos tus contraseñas.</p>
+</div></header>
+<main>
+<form id="f" novalidate></form>
+<div id="ok" tabindex="-1">
+<h2>Recibimos tu información</h2>
+<p>Tu número de solicitud es <strong id="rid"></strong>. En cuanto confirmemos tu anticipo empieza a contar tu plazo de 3 días; te escribimos por WhatsApp con la fecha exacta de entrega.</p>
+<div id="res"></div>
+<p class="noprint"><button class="alt" type="button" onclick="window.print()">Descargar mi resumen en PDF</button></p>
+</div>
+</main>
+<script>
+// 1) Pegue aquí la URL de la aplicación web de Apps Script (ver instrucciones en apps-script-formulario.gs)
+var ENDPOINT = "https://script.google.com/macros/s/AKfycbxi7z6suUFgudERslAE0WKbeYM4US3WrBu3lA7TaXe-azvt6q8_M8khLLjkm9EjRQ86/exec";
+
+var SI = ["Sí, ya di acceso de lectura","Lo haré hoy","Enviaré capturas de pantalla","No tengo / no sé"];
+var S = [
+["Tus datos","Para escribirte por WhatsApp y enviarte la evaluación.",[
+ ["comprobante","¿Por dónde enviarás el comprobante de pago del anticipo?","select",1,["WhatsApp","Correo"]],
+ ["nombre","Nombre y apellido","text",1],["cargo","Cargo","text",0],
+ ["whatsapp","WhatsApp (con indicativo)","tel",1,"+57 300 000 0000"],["correo","Correo","email",1]]],
+["Tu negocio","",[
+ ["negocio","Nombre del negocio","text",1],["sector","Sector o actividad","text",1],
+ ["ciudad","Ciudad(es) donde vendes o prestas el servicio","text",1],
+ ["web","Sitio web","url",0,"https://… (o escribe: no tengo)"]]],
+["Tus redes sociales","Pega el enlace de las que tengas. Deja en blanco las que no uses.",[
+ ["instagram","Instagram","text",0],["facebook","Facebook","text",0],["linkedin","LinkedIn","text",0],
+ ["tiktok","TikTok","text",0],["youtube","YouTube","text",0],["otras","Otras redes","text",0]]],
+["Accesos de lectura","Nos ayudan a darte cifras reales. Si no los tienes, la evaluación se hace igual con información pública.",[
+ ["analytics","Google Analytics","select",1,SI],["searchconsole","Google Search Console","select",1,SI]]],
+["Tus objetivos","",[
+ ["objetivo","¿Qué quieres lograr en los próximos 90 días? Si tienes una meta con número, inclúyela","textarea",1,"Ej.: pasar de 10 a 25 consultas al mes"],
+ ["producto","¿Qué producto o servicio quieres vender más?","text",1],
+ ["cliente","¿Quién es tu cliente ideal y qué problema le resuelves?","textarea",1]]],
+["Tus competidores","Hasta 3 que reconozcas, con su página web o red. Si no tienes claros cuáles son, escribe «elíjanlos ustedes».",[
+ ["comp1","Competidor 1","text",0],["comp2","Competidor 2","text",0],["comp3","Competidor 3","text",0]]],
+["Para cerrar","",[
+ ["intento","¿Qué has intentado antes para atraer clientes, o qué te preocupa?","textarea",0],
+ ["horario","Horario preferido para la llamada de 20 minutos","select",0,["Mañana (8 a 12)","Tarde (12 a 6)","Noche (después de las 6)"]],
+ ["entrega","¿Cómo prefieres recibir el PDF?","select",1,["WhatsApp","Correo","Ambos"]],
+ ["conocio","¿Cómo nos conociste?","select",0,["Recomendación","LinkedIn","WhatsApp","Instagram","Correo","Otro"]]]]
+];
+var f=document.getElementById("f"),labels={},h="";
+S.forEach(function(s){
+ h+="<fieldset><legend>"+s[0]+"</legend>"+(s[1]?'<p class="hint">'+s[1]+"</p>":"");
+ s[2].forEach(function(q){
+  labels[q[0]]=q[1];
+  var req=q[3]?' required aria-required="true"':"",ph=(q[2]!="select"&&q[4])?' placeholder="'+q[4]+'"':"",c;
+  if(q[2]=="select")c='<select name="'+q[0]+'"'+req+'><option value="">Elige una opción</option>'+q[4].map(function(o){return"<option>"+o+"</option>"}).join("")+"</select>";
+  else if(q[2]=="textarea")c='<textarea name="'+q[0]+'"'+req+ph+"></textarea>";
+  else c='<input type="'+(q[2]=="url"?"text":q[2])+'" name="'+q[0]+'"'+req+ph+">";
+  h+="<label>"+q[1]+(q[3]?' <span class="r" aria-hidden="true">*</span>':"")+c+"</label>";
+ });
+ h+="</fieldset>";
+});
+h+='<fieldset><label class="chk"><input type="checkbox" name="autoriza" value="Sí" required> <span>Autorizo la revisión de mi información pública y de los accesos de lectura que comparta, solo para esta evaluación.</span></label></fieldset>';
+h+='<input class="hp" type="text" name="empresa_web" tabindex="-1" autocomplete="off" aria-hidden="true">';
+h+='<p class="err" id="e" role="alert"></p><button class="go" id="b" type="submit">Enviar mi información</button>';
+f.innerHTML=h;
+labels.autoriza="Autoriza datos";
+
+f.addEventListener("submit",function(ev){
+ ev.preventDefault();
+ var e=document.getElementById("e"),b=document.getElementById("b");e.textContent="";
+ var miss=[].filter.call(f.elements,function(x){return x.required&&(x.type=="checkbox"?!x.checked:!x.value.trim())});
+ if(miss.length){e.textContent="Falta completar: "+miss.map(function(x){return labels[x.name]||"autorización"}).join("; ").slice(0,200);miss[0].focus();return}
+ if(f.empresa_web.value)return;
+ if(/^PEGAR/.test(ENDPOINT)){e.textContent="El formulario aún no está conectado a la hoja. Configure la URL de Apps Script.";return}
+ var d=new Date(),id="IMP-"+d.toISOString().slice(2,10).replace(/-/g,"")+"-"+Math.random().toString(36).slice(2,6).toUpperCase();
+ var p=new URLSearchParams(new FormData(f));p.delete("empresa_web");p.set("id",id);
+ b.disabled=true;b.textContent="Enviando…";
+ fetch(ENDPOINT,{method:"POST",mode:"no-cors",body:p}).then(function(){
+  var r="<h3>Resumen de tu solicitud "+id+"</h3><dl>";
+  p.forEach(function(v,k){if(labels[k]&&v)r+="<dt>"+labels[k]+"</dt><dd>"+v.replace(/</g,"&lt;")+"</dd>"});
+  document.getElementById("res").innerHTML=r+"</dl>";
+  document.getElementById("rid").textContent=id;
+  f.style.display="none";var o=document.getElementById("ok");o.style.display="block";o.focus();
+ }).catch(function(){e.textContent="No se pudo enviar. Revisa tu conexión e inténtalo de nuevo, o escríbenos por WhatsApp.";b.disabled=false;b.textContent="Enviar mi información"});
+});
+</script>
+</body>
+</html>
