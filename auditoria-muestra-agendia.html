@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evaluación de Presencia Online | Agendia (caso ilustrativo)</title>
+<!-- PLANTILLA: para un cliente real reemplace nombre, cifras, competidores y listas; conserve secciones y orden. -->
+<style>
+:root{--ink:#14302f;--paper:#f3f6f5;--card:#fff;--line:#d3dedc;--petrol:#0f3d3e;--amber:#e0a015;--muted:#586c6a;--bad:#b8402f;--mid:#c98a0c;--good:#2a7d62}
+*{box-sizing:border-box}
+@page{size:Letter;margin:14mm}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 "Segoe UI",system-ui,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+.demo{background:var(--amber);color:#2a1d00;text-align:center;font-weight:600;font-size:.85rem;padding:7px 12px}
+header{background:var(--petrol);color:#fff;padding:34px 0 38px}
+.brand{letter-spacing:.14em;font-size:.78rem;color:#9fd0c9;font-weight:700;text-transform:uppercase}
+h1{font-size:clamp(1.7rem,4.5vw,2.4rem);line-height:1.12;margin:8px 0 14px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 26px;color:#cfe3e0;font-size:.88rem}
+.meta b{color:#fff}
+section{padding:26px 0 4px}
+h2{font-size:1.25rem;color:var(--petrol);margin:0 0 12px;display:flex;gap:10px;align-items:baseline}
+h2 small{color:var(--amber);font-size:.8rem;font-weight:700;letter-spacing:.08em}
+h3{font-size:1rem;margin:16px 0 6px;color:var(--petrol)}
+p{margin:0 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.score{text-align:center}
+.score .n{font-size:2rem;font-weight:800;line-height:1}
+.score .l{font-size:.82rem;color:var(--muted);margin:4px 0 8px}
+.bar{height:8px;border-radius:5px;background:#e1eae8;overflow:hidden}
+.bar i{display:block;height:100%}
+.lo{color:var(--bad)}.lo i{background:var(--bad)}.md{color:var(--mid)}.md i{background:var(--mid)}.hi{color:var(--good)}.hi i{background:var(--good)}
+.big{background:var(--petrol);color:#fff;border:0}
+.big .n{color:#fff;font-size:2.6rem}.big .l{color:#b9d6d2}.big .bar{background:#2c5e5e}.big .bar i{background:var(--amber)}
+.find{border-left:5px solid var(--amber)}
+.find b.t{display:block;color:var(--petrol);margin-bottom:4px}
+table{width:100%;border-collapse:collapse;font-size:.88rem;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:12px}
+th{background:var(--petrol);color:#fff;text-align:left;padding:8px 10px;font-size:.8rem}
+td{padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:99px;background:#e6efed;color:var(--petrol);white-space:nowrap}
+.tag.a{background:#fbecc4;color:#6b4a00}
+.row{display:flex;align-items:center;gap:10px;margin:5px 0;font-size:.88rem}
+.row span:first-child{width:96px;flex:none}.row .bar{flex:1;height:14px}.row b{width:56px;text-align:right}
+.note{font-size:.8rem;color:var(--muted)}
+.cta{background:var(--petrol);color:#fff;border-radius:12px;padding:24px 26px;margin:22px 0}
+.cta h2{color:#fff}.cta a{display:inline-block;background:var(--amber);color:#2a1d00;font-weight:700;padding:12px 22px;border-radius:8px;text-decoration:none;margin-top:6px}
+.cta a:focus-visible,.pr:focus-visible{outline:3px solid #fff;outline-offset:2px}
+footer{padding:6px 0 34px}
+.pr{position:fixed;right:16px;bottom:16px;background:var(--petrol);color:#fff;border:0;border-radius:99px;padding:11px 18px;font:600 .85rem inherit;cursor:pointer;box-shadow:0 4px 14px #0004}
+@media(max-width:640px){td,th{padding:7px 6px}.row span:first-child{width:78px}}
+@media print{body{background:#fff;font-size:12.5px}.pr{display:none}section,.card,table,.cta{break-inside:avoid}header,.big,th,.cta,.demo,.tag,.bar i{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="demo">Caso de muestra: los nombres, las cifras y los datos de contacto fueron modificados con fines ilustrativos</div>
+<header><div class="wrap">
+<div class="brand">Impulso IO · Evaluación de Presencia Online</div>
+<h1>Agendia: qué tan fácil es encontrarla, elegirla y contratarla en internet</h1>
+<div class="meta"><span><b>Cliente:</b> Agendia (software de agenda y recordatorios por WhatsApp para consultorios y spas)</span><span><b>Ciudad:</b> Medellín</span><span><b>Referencia:</b> IMP-EJ-0001</span><span><b>Fecha:</b> octubre de 2026</span></div>
+</div></header>
+<main class="wrap">
+
+<section><h2><small>01</small>Resumen ejecutivo</h2>
+<div class="grid">
+<div class="card score big"><div class="n">49</div><div class="l">Puntaje global de 100</div><div class="bar"><i style="width:49%"></i></div></div>
+<div class="card score lo"><div class="n">52</div><div class="l">Google (SEO)</div><div class="bar"><i style="width:52%"></i></div></div>
+<div class="card score lo"><div class="n">24</div><div class="l">Asistentes de IA (GEO)</div><div class="bar"><i style="width:24%"></i></div></div>
+<div class="card score md"><div class="n">61</div><div class="l">Sitio web</div><div class="bar"><i style="width:61%"></i></div></div>
+<div class="card score md"><div class="n">58</div><div class="l">Redes sociales</div><div class="bar"><i style="width:58%"></i></div></div>
+</div>
+<p><b>Lectura rápida:</b> Agendia tiene un producto sólido y un sitio que funciona para quien llega, pero quienes aún no la conocen casi no la encuentran. Su mayor brecha está en los asistentes de IA y en las búsquedas sin su nombre, justo donde sus compradores comparan antes de pedir una demostración.</p>
+<div class="card find"><b class="t">Hallazgo 1 · GEO</b>Cuando se hacen 20 preguntas reales de comprador en ChatGPT, Gemini y Perplexity, Agendia aparece en 3. Su principal competidor, en 14.</div>
+<div class="card find"><b class="t">Hallazgo 2 · SEO</b>El 78% de las palabras que traen visitas incluyen el nombre de la marca. Para "software para agendar citas" no figura entre los 10 primeros resultados.</div>
+<div class="card find"><b class="t">Hallazgo 3 · Confianza y redes</b>Solo 6 reseñas públicas frente a más de 40 del líder, y solo el 5% de las publicaciones muestra casos reales de clientes.</div>
+</section>
+
+<section><h2><small>02</small>Contexto y objetivo del cliente</h2>
+<div class="card">
+<p><b>Objetivo a 90 días:</b> pasar de 18 a 40 solicitudes de demostración al mes.</p>
+<p><b>Producto a impulsar:</b> plan para consultorios y centros estéticos. <b>Cliente ideal:</b> dueños y administradores de negocios de 3 a 20 personas que pierden citas por inasistencia.</p>
+<p class="note">Fuente: formulario de inicio del cliente y revisión de su presencia pública. Las cifras de tráfico son estimadas y se usan como señal de dirección.</p></div>
+</section>
+
+<section><h2><small>03</small>Análisis de búsqueda: Google y asistentes de IA</h2>
+<table><tr><th>Indicador</th><th>Resultado</th><th>Lectura</th></tr>
+<tr><td>Visitas mensuales (est.)</td><td>2.900</td><td>Volumen bajo para el tamaño de su mercado</td></tr>
+<tr><td>Origen: orgánico / directo / otros</td><td>31% / 44% / 25%</td><td>La mayoría ya conocía la marca</td></tr>
+<tr><td>Palabras con tráfico que incluyen la marca</td><td>78%</td><td>Casi no se la encuentra por lo que ofrece</td></tr>
+<tr><td>Páginas sin meta descripción</td><td>14 de 22</td><td>Resultados poco atractivos en Google</td></tr>
+<tr><td>Imágenes sin texto alternativo</td><td>61</td><td>Pierde contexto para buscadores y accesibilidad</td></tr>
+<tr><td>Blog</td><td>9 artículos; el último, hace 7 meses</td><td>Sin contenido para búsquedas sin marca</td></tr></table>
+<h3>Prueba de asistentes de IA: 20 preguntas de comprador, menciones por empresa</h3>
+<div class="card">
+<div class="row"><span>Citalia</span><div class="bar hi"><i style="width:70%"></i></div><b>14/20</b></div>
+<div class="row"><span>Turnos360</span><div class="bar md"><i style="width:45%"></i></div><b>9/20</b></div>
+<div class="row"><span>ReservaYa</span><div class="bar md"><i style="width:35%"></i></div><b>7/20</b></div>
+<div class="row"><span><b>Agendia</b></span><div class="bar lo"><i style="width:15%"></i></div><b>3/20</b></div>
+<p class="note" style="margin:8px 0 0">Ejemplos de preguntas: "¿Qué software me sirve para reducir inasistencias en mi consultorio?", "¿Cómo envío recordatorios de cita por WhatsApp?". Resultados de una medición puntual; varían con el tiempo.</p></div>
+</section>
+
+<section><h2><small>04</small>Análisis del sitio web</h2>
+<table><tr><th>Aspecto</th><th>Situación</th><th>Impacto</th></tr>
+<tr><td>Velocidad en móvil</td><td>4,8 s para mostrar el contenido principal (objetivo: menos de 2,5 s)</td><td><span class="tag a">Alto</span></td></tr>
+<tr><td>Llamado a la acción</td><td>"Pedir demo" solo aparece en el encabezado</td><td><span class="tag a">Alto</span></td></tr>
+<tr><td>Formulario de demo</td><td>9 campos; los de calidad usan 3 o 4</td><td><span class="tag a">Alto</span></td></tr>
+<tr><td>Prueba social</td><td>Sin casos de clientes ni reseñas visibles</td><td><span class="tag a">Alto</span></td></tr>
+<tr><td>Mensaje</td><td>Habla de funciones; poco sobre resultados (menos citas perdidas)</td><td><span class="tag">Medio</span></td></tr>
+<tr><td>Precios</td><td>No hay referencia; el visitante debe preguntar</td><td><span class="tag">Medio</span></td></tr></table>
+</section>
+
+<section><h2><small>05</small>Análisis de redes sociales</h2>
+<table><tr><th>Red</th><th>Seguidores</th><th>Frecuencia</th><th>Interacción</th><th>Lectura</th></tr>
+<tr><td>LinkedIn</td><td>2.100</td><td>1 por semana, irregular</td><td>11 reacciones por publicación (0,5%)</td><td>Mejor canal para decisores; falta constancia</td></tr>
+<tr><td>Instagram</td><td>3.400</td><td>2 por mes</td><td>Baja</td><td>Capturas de pantalla del producto, poca historia</td></tr></table>
+<p><b>Mezcla de contenido:</b> 80% funciones del producto, 15% noticias de la empresa, 5% casos de clientes. Las publicaciones con personas (fundadores y equipo) rinden alrededor de 3 veces más que las de la página.</p>
+</section>
+
+<section><h2><small>06</small>Competidores analizados</h2>
+<table><tr><th>Competidor</th><th>Qué hace bien</th><th>Dónde es débil</th><th>Diferencial para Agendia</th></tr>
+<tr><td><b>Citalia</b></td><td>Más de 40 reseñas, blog activo, aparece primero en asistentes de IA</td><td>Soporte lento según reseñas; precio alto para negocios pequeños</td><td>Atención cercana y plan de entrada accesible</td></tr>
+<tr><td><b>Turnos360</b></td><td>Página clara por tipo de negocio y videos cortos de demostración</td><td>Sin recordatorios por WhatsApp; poca presencia en LinkedIn</td><td>Recordatorios por WhatsApp como promesa central</td></tr>
+<tr><td><b>ReservaYa</b></td><td>Prueba gratuita visible desde la portada</td><td>Casos de clientes genéricos, sin cifras</td><td>Casos con resultados medibles (menos inasistencias)</td></tr></table>
+</section>
+
+<section><h2><small>07</small>10 puntos de mejora priorizados</h2>
+<table><tr><th>#</th><th>Acción</th><th>Impacto</th><th>Esfuerzo</th><th>Plazo</th></tr>
+<tr><td>1</td><td>Escribir meta descripciones y títulos en las 14 páginas que no los tienen</td><td>Alto</td><td>Bajo</td><td>Esta semana</td></tr>
+<tr><td>2</td><td>Agregar texto alternativo a las 61 imágenes</td><td>Medio</td><td>Bajo</td><td>Esta semana</td></tr>
+<tr><td>3</td><td>Bajar la carga móvil de 4,8 s a menos de 2,5 s (comprimir imágenes)</td><td>Alto</td><td>Medio</td><td>15 días</td></tr>
+<tr><td>4</td><td>Repetir el botón de demo en cada sección y reducir el formulario a 4 campos</td><td>Alto</td><td>Bajo</td><td>15 días</td></tr>
+<tr><td>5</td><td>Publicar 3 casos de clientes con cifras (web y LinkedIn)</td><td>Alto</td><td>Medio</td><td>30 días</td></tr>
+<tr><td>6</td><td>Crear una página por tipo de negocio: consultorios, spas, centros estéticos</td><td>Alto</td><td>Medio</td><td>30 días</td></tr>
+<tr><td>7</td><td>Sumar preguntas frecuentes por solución con datos estructurados, para que los asistentes de IA las lean</td><td>Alto</td><td>Medio</td><td>30 días</td></tr>
+<tr><td>8</td><td>Plan de reseñas: de 6 a 25 en 60 días</td><td>Alto</td><td>Medio</td><td>60 días</td></tr>
+<tr><td>9</td><td>Calendario de LinkedIn: 3 publicaciones por semana, con perfiles de fundadores</td><td>Medio</td><td>Medio</td><td>Continuo</td></tr>
+<tr><td>10</td><td>Serie de 6 artículos para búsquedas sin marca (por ejemplo, "cómo reducir inasistencias a citas")</td><td>Alto</td><td>Alto</td><td>60 a 90 días</td></tr></table>
+</section>
+
+<section><h2><small>08</small>10 puntos en los que podemos aportar a su objetivo (18 a 40 demos al mes)</h2>
+<table><tr><th>#</th><th>Aporte de Impulso IO</th><th>Cómo apoya la meta</th></tr>
+<tr><td>1</td><td>Medición mensual de menciones en asistentes de IA (20 preguntas fijas)</td><td>Saber si la visibilidad sube</td></tr>
+<tr><td>2</td><td>Aplicar meta descripciones, textos alternativos y datos estructurados</td><td>Más visitas desde Google</td></tr>
+<tr><td>3</td><td>Redacción de las páginas por tipo de negocio</td><td>Visitantes que se reconocen y piden demo</td></tr>
+<tr><td>4</td><td>Entrevista y redacción de los 3 casos de clientes</td><td>Confianza para decidir</td></tr>
+<tr><td>5</td><td>Calendario de LinkedIn a 90 días con plantillas</td><td>Constancia sin carga extra</td></tr>
+<tr><td>6</td><td>Programa de reseñas: mensajes y momento ideal para pedirlas</td><td>Prueba social más rápida</td></tr>
+<tr><td>7</td><td>Rediseño del formulario y del recorrido hasta la demo</td><td>Más visitas convertidas en solicitudes</td></tr>
+<tr><td>8</td><td>Respuesta a cada solicitud por WhatsApp en menos de 5 minutos</td><td>Más demos realizadas</td></tr>
+<tr><td>9</td><td>Panel mensual: visitas sin marca, menciones y demos</td><td>Decisiones con datos</td></tr>
+<tr><td>10</td><td>Revisión trimestral de los 3 competidores</td><td>Mantener el diferencial</td></tr></table>
+</section>
+
+<section><h2><small>09</small>Ruta de 30 días</h2>
+<div class="grid">
+<div class="card"><b class="t">Semana 1</b><p class="note">Mejoras 1 y 2. Línea base de menciones en asistentes.</p></div>
+<div class="card"><b class="t">Semana 2</b><p class="note">Mejoras 3 y 4: velocidad y botón de demo.</p></div>
+<div class="card"><b class="t">Semana 3</b><p class="note">Primer caso de cliente y calendario de LinkedIn.</p></div>
+<div class="card"><b class="t">Semana 4</b><p class="note">Páginas por negocio y preguntas frecuentes. Revisión de resultados.</p></div>
+</div>
+</section>
+
+<div class="cta"><h2>Reciba una evaluación como esta para su negocio</h2>
+<p>PDF a la medida de su sector: análisis de búsqueda, sitio web, redes y 3 competidores, con 10 mejoras y 10 oportunidades ligadas a sus objetivos. Entrega en 3 días.</p>
+<a href="https://wlinan-dot.github.io/Diagn-stico-Presencia-online-SMBs/">Diagnóstico Presencia Online</a></div>
+</main>
+<footer><div class="wrap note">Metodología: revisión de información pública del sitio, buscadores, asistentes de IA y redes, más los datos que comparte el cliente. Las cifras son estimadas y reflejan un momento puntual. Caso de muestra: los nombres, las cifras y los datos de contacto fueron modificados con fines ilustrativos. Este documento no garantiza resultados de posicionamiento ni ventas. © Impulso IO.</div></footer>
+<button class="pr" onclick="window.print()" type="button">Guardar como PDF</button>
+</body>
+</html>
