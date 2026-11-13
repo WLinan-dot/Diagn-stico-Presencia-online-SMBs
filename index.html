@@ -122,7 +122,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <svg width="28" height="28" viewBox="0 0 100 100" aria-hidden="true"><path d="M20 14 L56 28 L56 78 L20 92Z" fill="#D9FF00"/><path d="M50 28 L88 50 L88 60 L50 80Z" fill="#0A6B67"/></svg>
       Impulso IO
     </a>
-    <a class="btn" href="pago.html">Reservar mi cupo</a>
+    <a class="btn" href="pago.html" data-zoho="Reservar mi cupo (header)">Reservar mi cupo</a>
   </div>
 </header>
 
@@ -134,7 +134,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <h1>¿Te recomienda Google? <span>¿Y te recomienda ChatGPT?</span></h1>
     <p>Hoy tus clientes deciden preguntando en buscadores y asistentes conversacionales. Te mostramos cómo te ven, cómo te encuentran y qué hace mejor tu competencia, con un plan claro para ajustar primero lo que más importa.</p>
     <div class="cta-row">
-      <a class="btn" href="pago.html">Quiero mi evaluación</a>
+      <a class="btn" href="pago.html" data-zoho="Quiero mi evaluación (hero)">Quiero mi evaluación</a>
       <a class="btn btn-ghost" href="#incluye">Ver qué incluye</a>
     </div>
     <div class="facts">
@@ -211,7 +211,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
           <li>Una ronda de ajustes menores</li>
           <li>50% al iniciar · 50% al recibir</li>
         </ul>
-        <a class="btn" href="pago.html">Reservar mi cupo</a>
+        <a class="btn" href="pago.html" data-zoho="Reservar mi cupo (precio)">Reservar mi cupo</a>
       </div>
       <div class="scope">
         <span class="badge">Bono de reserva rápida</span>
@@ -249,7 +249,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <h2>Menos operación. Más crecimiento.</h2>
     <p>Empieza por saber dónde estás parado. Reserva tu evaluación antes de que se llenen los cupos de la semana.</p>
     <div class="cta-row">
-      <a class="btn" href="#" data-wa>Escríbenos por WhatsApp</a>
+      <a class="btn" href="#" data-wa data-zoho="Escríbenos por WhatsApp (final)">Escríbenos por WhatsApp</a>
       <a class="btn btn-ghost" href="pago.html">Ya hablamos: pagar anticipo</a>
     </div>
   </div>
@@ -263,6 +263,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <span>Menos operación. Más crecimiento.</span>
   </div>
 </footer>
+
+<!-- Zoho SalesIQ: carga única -->
+<script>window.$zoho=window.$zoho||{};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script>
+<script id="zsiqscript" src="https://salesiq.zoho.com/widget?wc=siqb2660e0673aaf066eddbc0f82f9684f77c5c3d53e8a5fd91b8156e1b595bc698" defer></script>
 
 <script>
 /* ===== CONFIGURACIÓN: reemplaza estos valores antes de publicar ===== */
@@ -283,6 +287,32 @@ var CONFIG = {
   if (b && CONFIG.cupos) b.textContent = "Máximo " + CONFIG.cupos + " evaluaciones esta semana";
   document.getElementById("y").textContent = new Date().getFullYear();
 })();
+
+/* Registro de clics en Zoho SalesIQ (no altera la navegación) */
+(function(){
+  var ultimo = "";
+  var previo = window.$zoho.salesiq.ready;
+  window.$zoho.salesiq.ready = function(){
+    if (typeof previo === "function") previo();
+    if (ultimo) etiquetar(ultimo);
+  };
+  function etiquetar(boton){
+    try {
+      $zoho.salesiq.visitor.info({
+        "Boton clicado": boton,
+        "Pagina": location.pathname || "/"
+      });
+    } catch(e){}
+  }
+  document.querySelectorAll("[data-zoho]").forEach(function(el){
+    el.addEventListener("click", function(){
+      ultimo = el.getAttribute("data-zoho");
+      etiquetar(ultimo);
+    });
+  });
+})();
 </script>
+</body>
+</html>
 </body>
 </html>
