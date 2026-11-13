@@ -106,7 +106,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
           <div><span>Entrega</span><b>3 días tras anticipo y formulario</b></div>
         </div>
         <div class="cta">
-          <a class="btn" href="#" data-wa>Enviar comprobante por WhatsApp</a>
+          <a class="btn" href="#" data-wa data-zoho="Enviar comprobante por WhatsApp (pago)">Enviar comprobante por WhatsApp</a>
           <a class="btn btn-dark" style="background:var(--black);color:var(--white)" href="index.html#faq">Ver preguntas frecuentes</a>
         </div>
       </div>
@@ -124,6 +124,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </footer>
 
+<!-- Zoho SalesIQ: carga única -->
+<script>window.$zoho=window.$zoho||{};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script>
+<script id="zsiqscript" src="https://salesiq.zoho.com/widget?wc=siqb2660e0673aaf066eddbc0f82f9684f77c5c3d53e8a5fd91b8156e1b595bc698" defer></script>
+
 <script>
 (function(){
   var WHATSAPP = "573502188008";
@@ -133,6 +137,30 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     a.target = "_blank"; a.rel = "noopener";
   });
   document.getElementById("y").textContent = new Date().getFullYear();
+})();
+
+/* Registro de clics en Zoho SalesIQ (no altera la navegación) */
+(function(){
+  var ultimo = "";
+  var previo = window.$zoho.salesiq.ready;
+  window.$zoho.salesiq.ready = function(){
+    if (typeof previo === "function") previo();
+    if (ultimo) etiquetar(ultimo);
+  };
+  function etiquetar(boton){
+    try {
+      $zoho.salesiq.visitor.info({
+        "Boton clicado": boton,
+        "Pagina": location.pathname || "/"
+      });
+    } catch(e){}
+  }
+  document.querySelectorAll("[data-zoho]").forEach(function(el){
+    el.addEventListener("click", function(){
+      ultimo = el.getAttribute("data-zoho");
+      etiquetar(ultimo);
+    });
+  });
 })();
 </script>
 </body>
